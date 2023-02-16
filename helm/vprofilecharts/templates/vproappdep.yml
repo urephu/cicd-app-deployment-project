@@ -23,7 +23,7 @@ spec:
       initContainers:
       - name: init-mydb
         image: busybox
-        command: ['sh', '-c', 'until nslookup vprodb.test.svc.cluster.local; do echo waiting for mydb; sleep 2; done;']
+        command: ['sh', '-c', 'until nslookup vprodb.{{.Values.namespace}}.svc.cluster.local; do echo waiting for mydb; sleep 2; done;']
       - name: init-memcache
         image: busybox
-        command: ['sh', '-c', 'until nslookup vprocache01.test.svc.cluster.local; do echo waiting for mydb; sleep 2; done;']
+        command: ['sh', '-c', 'until nslookup vprocache01.{{.Values.namespace}}.svc.cluster.local; do echo waiting for mydb; sleep 2; done;']
