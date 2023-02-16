@@ -5,14 +5,14 @@
 
 ## Jenkins plugins
 
-Docker pipeline
-pipeline Utility steps
-slack
-Github integration plugins
-Maven integration plugins
-Nexus Artifact Uploader
-sonarqube sanner for jenkins
-Build timestamp
+- Docker pipeline
+- pipeline Utility steps
+- slack
+- Github integration plugins
+- Maven integration plugins
+- Nexus Artifact Uploader
+- sonarqube sanner for jenkins
+- Build timestamp
 
 
 ## Technologies 
