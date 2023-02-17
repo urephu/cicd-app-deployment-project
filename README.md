@@ -1,7 +1,25 @@
+## Goal of the project
+
+- Continous delivery for containers to kubernetes clusters
+
 ## Prerequisites
 - JDK 1.8 or later
 - Maven 3 or later
 - MySQL 5.6 or later
+
+## Tools used
+
+- kubernetes (Conatiner Orchestration)
+- Docker (Container runtime)
+- Jenkins (CI/CD)
+- Docker Hub (Container Registry)
+- Helm (Packaging and deploying on kubernetes)
+- Git (Version Control)
+- Maven (Build tool)
+- SonarQube (Code Analysis)
+- AWS (Cloud Environment) 
+- EC2 Instance (Servers)
+- ELB (Load balancer)
 
 ## Jenkins plugins
 
