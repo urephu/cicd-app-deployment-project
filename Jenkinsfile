@@ -7,7 +7,7 @@ pipeline {
     }
 */
     environment {
-        registry = "isrealurephu/vproappdock"
+        registry = "isrealurephu/java-app"
         registryCredential = "dockerhub"
     }
 
@@ -100,9 +100,9 @@ pipeline {
         }
 
         stage ( 'Kubernetes Deployment') {
-          agent {label 'KOPS'}
+          agent {label 'master-node'}
              steps {
-             sh "helm upgrade --install --force vprofile-stack  helm/vprofilecharts --set appimage=${registry}:V${BUILD_NUMBER} --namespace prod"
+             sh "helm upgrade --install --force vprofile-stack  helm/vprofilecharts --set appimage=${registry}:V${BUILD_NUMBER} --set namespace=prod --namespace prod"
              }
         }
 
