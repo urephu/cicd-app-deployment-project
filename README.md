@@ -1,3 +1,7 @@
+## Goal of the project
+
+- Continous delivery for containers to kubernetes clusters
+
 ## Prerequisites
 - JDK 1.8 or later
 - Maven 3 or later
