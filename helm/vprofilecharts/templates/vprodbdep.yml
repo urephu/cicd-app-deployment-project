@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: vprodb
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: vprodb
-        image: imranvisualpath/8pmdbimg:v1
+        image: isrealurephu/vprofiledb:V1
         ports:
         - name: vprodb-port
           containerPort: 3306
@@ -26,7 +26,71 @@ spec:
              secretKeyRef:
                name: app-secret
                key: db-pass
+        volumeMounts:
+        - mountPath: "/var/lib/mysql"
+          name: vprodb-vol
+      volumes:
+      - name: vprodb-vol
+        persistentVolumeClaim:
+         claimName: vprodb-pv-claim
+
+
 #        env:
 #         - name: MYSQL_ROOT_PASSWORD
 #           value: "vprodbpass"
+
+
+---
+
+apiVersion: v1
+
+kind: PersistentVolume
+
+metadata:
+
+  name: vprodb-pv
+
+  labels:
+
+    app: vprodb
+
+spec:
+
+  storageClassName: manual
+
+  capacity:
+
+    storage: 10Gi
+
+  accessModes:
+
+    - ReadWriteOnce
+
+  hostPath:
+
+    path: "/mnt/data"
+
+---
+
+apiVersion: v1
+
+kind: PersistentVolumeClaim
+
+metadata:
+
+  name: vprodb-pv-claim
+
+spec:
+
+  storageClassName: manual
+
+  accessModes:
+
+    - ReadWriteOnce
+
+  resources:
+
+    requests:
+
+      storage: 3Gi
 
