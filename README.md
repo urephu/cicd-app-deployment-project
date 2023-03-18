@@ -1,6 +1,6 @@
 ## Goal of the project
 
-- Continous delivery for containers to kubernetes clusters
+- Continous delivery for containers(Docker)to kubernetes clusters
 
 ## Prerequisites
 - JDK 1.8 or later
