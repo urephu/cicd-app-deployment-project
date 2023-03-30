@@ -9,7 +9,7 @@
 
 ## Tools used
 
-- kubernetes (Conatiner Orchestration)
+- kubernetes (Conatiner Orchestration )
 - Docker (Container runtime)
 - Jenkins (CI/CD)
 - Docker Hub (Container Registry)
