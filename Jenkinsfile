@@ -7,7 +7,7 @@ pipeline {
     }
 */
     environment {
-        registry = "isrealurephu/java-app"
+        registry = "isrealurephu/metro-app"
         registryCredential = "dockerhub"
     }
 
@@ -99,12 +99,19 @@ pipeline {
           }
         }
 
-        stage ( 'Kubernetes Deployment') {
-          agent {label 'master-node'}
-             steps {
-             sh "helm upgrade --install --force vprofile-stack  helm/vprofilecharts --set appimage=${registry}:V${BUILD_NUMBER} --set namespace=prod --namespace prod"
-             }
-        }
+
+
+        stage('deploy to lke cluster') {
+            steps {
+                script {
+                   echo 'deploying docker image...'
+                   withKubeConfig([credentialsId: "metro-lke", serverUrl: 'https://b0136ffc-adcd-4984-8ff0-f9dd24d495e1.eu-west-1.linodelke.net']){
+                       sh 'helm upgrade --install --force vprofile-stack  helm/vprofilecharts --set appimage=${registry}:V${BUILD_NUMBER} --set namespace=prod --namespace prod'
+
+                   }
+                
+                }
+            }
 
     }
 
