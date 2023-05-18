@@ -73,6 +73,13 @@ pipeline {
             }
         }
 
+        stage ("DEPENDENCY CHECK"){
+            steps{
+                dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'DP-check'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
+
         stage ( "Build Docker App Images" ) {
            steps {
              script {
